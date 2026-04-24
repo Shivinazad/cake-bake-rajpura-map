@@ -168,5 +168,53 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .text-stroke-cream {
+    -webkit-text-stroke: 1px var(--brand-cream);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--brand-cocoa-deep);
+    box-shadow: 2px 2px 0 var(--brand-cocoa-deep);
+  }
+  .pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 2px solid var(--brand-cocoa-deep);
+    background: var(--brand-yellow);
+    color: var(--brand-cocoa-deep);
+    box-shadow: 3px 3px 0 var(--brand-cocoa-deep);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .pill-btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--brand-cocoa-deep); }
+  .pill-btn-ghost {
+    background: transparent;
+    box-shadow: none;
+    border: none;
   }
 }
