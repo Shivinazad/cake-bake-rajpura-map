@@ -22,7 +22,7 @@ export function LocationMap() {
         <div className="relative z-10">
           <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-tight">
             VISIT OUR <br /> BAKERY IN <br /> RAJPURA
-            <span className="text-[var(--brand-orange)]"> ?</span>
+            <span className="text-[var(--brand-orange)]"> !</span>
           </h2>
 
           <p className="mt-5 max-w-md text-sm text-[var(--brand-cream)]/75 leading-relaxed">
