@@ -47,9 +47,16 @@ export function Reviews() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
+  const goTo = (i: number) => {
+    const el = scrollerRef.current;
+    const card = el?.querySelector<HTMLElement>("[data-review]");
+    if (!el || !card) return;
+    el.scrollTo({ left: (card.offsetWidth + 16) * i, behavior: "smooth" });
+  };
+
   return (
-    <section id="order" className="px-4 py-16">
-      <div className="mx-auto max-w-7xl rounded-[2.5rem] bg-[var(--brand-blue)] p-6 md:p-12 grid md:grid-cols-2 gap-8 md:items-center relative overflow-hidden">
+    <section id="order" className="px-4 py-16 md:py-24">
+      <div className="mx-auto max-w-7xl rounded-[2.5rem] bg-[var(--brand-blue)] p-6 md:p-16 grid md:grid-cols-2 gap-10 md:gap-16 md:items-center relative overflow-hidden">
         {/* Left column: heading + rating */}
         <div>
           <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[var(--brand-cocoa-deep)] leading-tight">
@@ -67,46 +74,50 @@ export function Reviews() {
           </div>
         </div>
 
-        {/* Right column: swipeable reviews */}
-        <div>
+        {/* Right column: compact swipeable reviews with breathing room */}
+        <div className="md:px-6">
           <div
             ref={scrollerRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-2 px-2 pb-2"
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2"
             style={{ scrollbarWidth: "none" }}
           >
             {testimonials.map((t) => (
               <div
                 key={t.name}
                 data-review
-                className="flex-none w-full snap-center rounded-2xl bg-[var(--brand-cream)] border-2 border-[var(--brand-cocoa-deep)] shadow-[3px_3px_0_var(--brand-cocoa-deep)] p-5 relative"
+                className="flex-none w-full snap-center"
               >
-                <Quote className="absolute -top-3 -left-2 h-6 w-6 text-[var(--brand-orange)] fill-current" />
-                <p className="text-sm text-[var(--brand-cocoa-deep)]/85 leading-relaxed italic min-h-[6rem]">
-                  "{t.text}"
-                </p>
-                <div className="mt-4 flex items-center gap-3">
-                  <div
-                    className="h-10 w-10 rounded-full flex items-center justify-center font-display font-extrabold text-[var(--brand-cocoa-deep)] border-2 border-[var(--brand-cocoa-deep)] text-sm shrink-0"
-                    style={{ background: t.color }}
-                  >
-                    {t.initials}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-display font-extrabold text-[var(--brand-cocoa-deep)] text-sm leading-tight truncate">{t.name}</p>
-                    <p className="text-[11px] text-[var(--brand-cocoa-deep)]/60 uppercase tracking-wider truncate">{t.location} · loved the {t.item}</p>
+                <div className="rounded-2xl bg-[var(--brand-cream)] border-2 border-[var(--brand-cocoa-deep)] shadow-[3px_3px_0_var(--brand-cocoa-deep)] p-5 relative max-w-sm mx-auto">
+                  <Quote className="absolute -top-3 -left-2 h-6 w-6 text-[var(--brand-orange)] fill-current" />
+                  <p className="text-sm text-[var(--brand-cocoa-deep)]/85 leading-relaxed italic">
+                    "{t.text}"
+                  </p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <div
+                      className="h-10 w-10 rounded-full flex items-center justify-center font-display font-extrabold text-[var(--brand-cocoa-deep)] border-2 border-[var(--brand-cocoa-deep)] text-sm shrink-0"
+                      style={{ background: t.color }}
+                    >
+                      {t.initials}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-display font-extrabold text-[var(--brand-cocoa-deep)] text-sm leading-tight truncate">{t.name}</p>
+                      <p className="text-[11px] text-[var(--brand-cocoa-deep)]/60 uppercase tracking-wider truncate">{t.location} · loved the {t.item}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Dots indicator (visual only, scroll to navigate) */}
-          <div className="mt-4 flex justify-center gap-2">
+          {/* Clickable dots */}
+          <div className="mt-5 flex justify-center gap-2">
             {testimonials.map((_, i) => (
-              <span
+              <button
                 key={i}
-                aria-hidden
-                className={`h-2 rounded-full transition-all ${i === active ? "w-6 bg-[var(--brand-cocoa-deep)]" : "w-2 bg-[var(--brand-cocoa-deep)]/30"}`}
+                type="button"
+                aria-label={`Go to review ${i + 1}`}
+                onClick={() => goTo(i)}
+                className={`h-2 rounded-full transition-all ${i === active ? "w-6 bg-[var(--brand-cocoa-deep)]" : "w-2 bg-[var(--brand-cocoa-deep)]/30 hover:bg-[var(--brand-cocoa-deep)]/60"}`}
               />
             ))}
           </div>
