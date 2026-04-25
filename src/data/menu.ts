@@ -43,7 +43,7 @@ export const menu: MenuItem[] = [
   { id: "biscoff-waffle", name: "Biscoff Waffle", category: "waffles", img: kitkat, bg: "var(--brand-yellow)", tagline: "Caramel heaven", description: "Warm waffle topped with melted Biscoff spread, biscuit crumbs and cream." },
   { id: "nutella-waffle", name: "Nutella Banana Waffle", category: "waffles", img: kitkat, bg: "var(--brand-pink)", tagline: "Classic combo", description: "Toasted waffle, warm Nutella drizzle, fresh banana slices and powdered sugar." },
 
-  { id: "biscoff-cheesecake", name: "Biscoff Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-cream)", tagline: "Bestseller", description: "Buttery biscuit base, cloud-like cream cheese filling and a Biscoff caramel top." },
+  { id: "biscoff-cheesecake", name: "Biscoff Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-cream)", tagline: "", description: "Buttery biscuit base, cloud-like cream cheese filling and a Biscoff caramel top." },
   { id: "blueberry-cheesecake", name: "Blueberry Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-blue)", tagline: "Tangy & sweet", description: "Classic baked cheesecake topped with a glossy homemade blueberry compote." },
   { id: "newyork-cheesecake", name: "New York Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-purple)", tagline: "Original recipe", description: "Dense, creamy and rich — the way New York intended. Served with berry coulis." },
 
