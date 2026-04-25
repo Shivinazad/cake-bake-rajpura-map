@@ -11,7 +11,7 @@ export function Navbar() {
             <span className="inline-block h-2 w-2 rounded-full bg-[var(--brand-yellow)]" />
             15% Off on ₹500+ Orders
           </span>
-          <span className="text-center flex-1 sm:flex-none">Free delivery within Rajpura • Order on Zomato & Swiggy</span>
+          <span className="text-center flex-1 sm:flex-none">Freshly baked every morning • Order on Zomato & Swiggy</span>
           <span className="hidden sm:flex items-center gap-2">
             Subscribe & Save 10%
             <span className="inline-block h-2 w-2 rounded-full bg-[var(--brand-orange)]" />

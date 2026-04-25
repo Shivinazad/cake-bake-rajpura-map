@@ -32,7 +32,7 @@ export function WhySpecial() {
             </div>
             <div className="rounded-2xl bg-[var(--brand-cocoa)] text-[var(--brand-cream)] p-5">
               <p className="font-display text-lg font-extrabold leading-tight uppercase">Taste the real <br /> bakery <br /> bliss.</p>
-              <p className="mt-3 inline-block bg-[var(--brand-orange)] text-[var(--brand-cocoa-deep)] font-display font-extrabold px-3 py-1 rounded-full text-sm">₹250</p>
+              <p className="mt-3 inline-block bg-[var(--brand-orange)] text-[var(--brand-cocoa-deep)] font-display font-extrabold px-3 py-1 rounded-full text-[10px] uppercase tracking-wider">Baked Fresh Daily</p>
             </div>
           </div>
 
