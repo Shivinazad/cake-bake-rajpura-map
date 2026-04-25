@@ -4,8 +4,8 @@ export function LocationMap() {
   return (
     <section id="contact" className="px-4 py-12">
       <div className="mx-auto max-w-7xl rounded-[2.5rem] bg-[var(--brand-cocoa-deep)] text-[var(--brand-cream)] p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative overflow-hidden">
-        {/* Decorative wheat illustration */}
-        <div className="absolute right-4 top-4 text-[var(--brand-cream)]/10 text-[200px] leading-none select-none pointer-events-none">🌾</div>
+        {/* Decorative wheat illustration — hidden on mobile, smaller on desktop */}
+        <div className="hidden lg:block absolute right-6 top-6 text-[var(--brand-cream)]/[0.07] text-[120px] leading-none select-none pointer-events-none">🌾</div>
 
         {/* Map */}
         <div className="rounded-3xl overflow-hidden border-4 border-[var(--brand-cream)] aspect-[4/3]">

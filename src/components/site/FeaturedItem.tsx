@@ -1,7 +1,10 @@
 import featured from "@/assets/featured-item.jpg";
-import nutella from "@/assets/nutella-cake-small.jpg";
+import { getFeaturedOfTheDay } from "@/data/menu";
 
 export function FeaturedItem() {
+  const item = getFeaturedOfTheDay();
+  const today = new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long" });
+
   return (
     <section className="px-4 py-20">
       <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -31,19 +34,22 @@ export function FeaturedItem() {
             DOSE OF <span className="inline-flex items-center gap-2">DELIGHT <span className="text-3xl">🍪</span></span>
           </h2>
 
-          <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-[var(--brand-cocoa-deep)]/70">Featured Item —</p>
+          <div className="mt-6 flex items-center gap-3">
+            <p className="text-sm font-semibold uppercase tracking-wider text-[var(--brand-cocoa-deep)]/70">Featured Item —</p>
+            <span className="chip bg-[var(--brand-yellow)] text-[10px]">★ Today's Pick</span>
+          </div>
+          <p className="text-xs uppercase tracking-widest text-[var(--brand-cocoa-deep)]/50 mt-1">{today}</p>
 
           <div className="mt-3 flex items-center gap-4">
-            <img src={nutella} alt="Nutella cake" loading="lazy" width={80} height={80} className="h-16 w-16 rounded-xl object-cover" />
+            <img src={item.img} alt={item.name} loading="lazy" width={80} height={80} className="h-16 w-16 rounded-xl object-cover" />
             <div className="flex-1">
-              <p className="font-display text-2xl font-bold text-[var(--brand-cocoa-deep)]">Nutella Cake</p>
-              <p className="text-sm text-[var(--brand-cocoa-deep)]/60">Eggless available</p>
+              <p className="font-display text-2xl font-bold text-[var(--brand-cocoa-deep)]">{item.name}</p>
+              <p className="text-sm text-[var(--brand-cocoa-deep)]/60">{item.eggless ? "Eggless available" : item.tagline}</p>
             </div>
-            <p className="font-display text-2xl font-extrabold text-[var(--brand-orange)]">₹450</p>
           </div>
 
           <p className="mt-6 max-w-md text-sm text-[var(--brand-cocoa-deep)]/70 leading-relaxed">
-            Every cake should have a show-stopping moment in their repertoire — and this one is one of our absolute favourites, soft, rich, and pure indulgence.
+            {item.description}
           </p>
         </div>
       </div>
