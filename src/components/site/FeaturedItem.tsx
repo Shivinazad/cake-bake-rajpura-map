@@ -44,7 +44,9 @@ export function FeaturedItem() {
             <img src={item.img} alt={item.name} loading="lazy" width={80} height={80} className="h-16 w-16 rounded-xl object-cover" />
             <div className="flex-1">
               <p className="font-display text-2xl font-bold text-[var(--brand-cocoa-deep)]">{item.name}</p>
-              <p className="text-sm text-[var(--brand-cocoa-deep)]/60">{item.eggless ? "Eggless available" : item.tagline}</p>
+              {(item.eggless || item.tagline) && (
+                <p className="text-sm text-[var(--brand-cocoa-deep)]/60">{item.eggless ? "Eggless available" : item.tagline}</p>
+              )}
             </div>
           </div>
 

@@ -20,27 +20,31 @@ export function WhySpecial() {
           </div>
         </div>
 
-        {/* Composition grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
+        {/* Composition grid — tight, dense, no orphan whitespace on mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 md:items-end">
+          {/* Brownies */}
           <div className="rounded-3xl overflow-hidden aspect-square">
             <img src={brownies} alt="Stack of brownies" loading="lazy" width={700} height={700} className="w-full h-full object-cover" />
           </div>
 
-          <div className="space-y-4">
+          {/* Baker portrait — moved up so the two top tiles are equal height on mobile */}
+          <div className="rounded-3xl overflow-hidden aspect-square md:aspect-[3/4] bg-[var(--brand-yellow)] md:order-3">
+            <img src={baker} alt="Cake Bake By Divesh head baker" loading="lazy" width={800} height={900} className="w-full h-full object-cover" />
+          </div>
+
+          {/* Nutella + cocoa caption stack */}
+          <div className="space-y-3 md:space-y-4 md:order-2">
             <div className="rounded-2xl overflow-hidden aspect-square bg-[var(--brand-mint)]">
               <img src={nutella} alt="Nutella dessert" loading="lazy" width={400} height={400} className="w-full h-full object-cover" />
             </div>
-            <div className="rounded-2xl bg-[var(--brand-cocoa)] text-[var(--brand-cream)] p-5">
-              <p className="font-display text-lg font-extrabold leading-tight uppercase">Taste the real <br /> bakery <br /> bliss.</p>
+            <div className="rounded-2xl bg-[var(--brand-cocoa)] text-[var(--brand-cream)] p-4 md:p-5">
+              <p className="font-display text-base md:text-lg font-extrabold leading-tight uppercase">Taste the real bakery bliss.</p>
               <p className="mt-3 inline-block bg-[var(--brand-orange)] text-[var(--brand-cocoa-deep)] font-display font-extrabold px-3 py-1 rounded-full text-[10px] uppercase tracking-wider">Baked Fresh Daily</p>
             </div>
           </div>
 
-          <div className="rounded-3xl overflow-hidden aspect-[3/4] bg-[var(--brand-yellow)] md:row-span-1 md:col-span-1">
-            <img src={baker} alt="Cake Bake By Divesh head baker" loading="lazy" width={800} height={900} className="w-full h-full object-cover" />
-          </div>
-
-          <div className="space-y-4">
+          {/* Combo chip + fruitcake + quote stack */}
+          <div className="space-y-3 md:space-y-4 md:order-4">
             <span className="chip bg-[var(--brand-mint)] inline-block">★ Combo</span>
             <div className="rounded-2xl overflow-hidden aspect-square">
               <img src={fruitcake} alt="Fruit cake stack" loading="lazy" width={700} height={700} className="w-full h-full object-cover" />

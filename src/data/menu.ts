@@ -1,10 +1,21 @@
-import kitkat from "@/assets/product-kitkat-waffle.jpg";
 import biscoff from "@/assets/product-biscoff-cheesecake.jpg";
-import truffle from "@/assets/product-truffle-cake.jpg";
-import nutella from "@/assets/nutella-cake-small.jpg";
-import brownies from "@/assets/brownies-stack.jpg";
-import fruitcake from "@/assets/fruitcake-stack.jpg";
-import featured from "@/assets/featured-item.jpg";
+import nutellaCake from "@/assets/menu/nutella-cake.jpg";
+import chocoTruffle from "@/assets/menu/choco-truffle.jpg";
+import rasmalaiCake from "@/assets/menu/rasmalai-cake.jpg";
+import fruitGateau from "@/assets/menu/fruit-gateau.jpg";
+import kitkatWaffle from "@/assets/menu/kitkat-waffle.jpg";
+import biscoffWaffle from "@/assets/menu/biscoff-waffle.jpg";
+import nutellaWaffle from "@/assets/menu/nutella-waffle.jpg";
+import blueberryCheesecake from "@/assets/menu/blueberry-cheesecake.jpg";
+import newyorkCheesecake from "@/assets/menu/newyork-cheesecake.jpg";
+import fudgeBrownie from "@/assets/menu/fudge-brownie.jpg";
+import walnutBrownie from "@/assets/menu/walnut-brownie.jpg";
+import chocoChipBrownie from "@/assets/menu/choco-chip-brownie.jpg";
+import chocoPastry from "@/assets/menu/choco-pastry.jpg";
+import redVelvetPastry from "@/assets/menu/red-velvet-pastry.jpg";
+import pineapplePastry from "@/assets/menu/pineapple-pastry.jpg";
+import teaTimeBox from "@/assets/menu/tea-time-box.jpg";
+import celebrationBox from "@/assets/menu/celebration-box.jpg";
 
 export type Category = {
   slug: string;
@@ -34,29 +45,29 @@ export const categories: Category[] = [
 ];
 
 export const menu: MenuItem[] = [
-  { id: "nutella-cake", name: "Nutella Cake", category: "cakes", img: nutella, bg: "var(--brand-orange)", tagline: "Eggless available", description: "A pillowy chocolate sponge layered with silky Nutella ganache and roasted hazelnuts.", eggless: true },
-  { id: "choco-truffle", name: "Choco Truffle Cake", category: "cakes", img: truffle, bg: "var(--brand-yellow)", tagline: "Bestseller", description: "Triple-layer dark chocolate sponge soaked in ganache, finished with rich truffle cream." },
-  { id: "rasmalai-cake", name: "Rasmalai Cake", category: "cakes", img: fruitcake, bg: "var(--brand-pink)", tagline: "Fusion favourite", description: "Saffron-soaked sponge, cardamom cream and a generous crown of rasmalai shavings." },
-  { id: "fruit-gateau", name: "Fresh Fruit Gateau", category: "cakes", img: fruitcake, bg: "var(--brand-mint)", tagline: "Light & fresh", description: "Vanilla chiffon layered with whipped cream and seasonal hand-cut fruit." },
+  { id: "nutella-cake", name: "Nutella Cake", category: "cakes", img: nutellaCake, bg: "var(--brand-orange)", tagline: "Eggless available", description: "A pillowy chocolate sponge layered with silky Nutella ganache and roasted hazelnuts.", eggless: true },
+  { id: "choco-truffle", name: "Choco Truffle Cake", category: "cakes", img: chocoTruffle, bg: "var(--brand-yellow)", tagline: "Bestseller", description: "Triple-layer dark chocolate sponge soaked in ganache, finished with rich truffle cream." },
+  { id: "rasmalai-cake", name: "Rasmalai Cake", category: "cakes", img: rasmalaiCake, bg: "var(--brand-pink)", tagline: "Fusion favourite", description: "Saffron-soaked sponge, cardamom cream and a generous crown of rasmalai shavings." },
+  { id: "fruit-gateau", name: "Fresh Fruit Gateau", category: "cakes", img: fruitGateau, bg: "var(--brand-mint)", tagline: "Light & fresh", description: "Vanilla chiffon layered with whipped cream and seasonal hand-cut fruit." },
 
-  { id: "kitkat-waffle", name: "KitKat Waffle", category: "waffles", img: kitkat, bg: "var(--brand-orange)", tagline: "Crowd favourite", description: "Belgian waffle drowned in chocolate sauce, crushed KitKat and a scoop of vanilla." },
-  { id: "biscoff-waffle", name: "Biscoff Waffle", category: "waffles", img: kitkat, bg: "var(--brand-yellow)", tagline: "Caramel heaven", description: "Warm waffle topped with melted Biscoff spread, biscuit crumbs and cream." },
-  { id: "nutella-waffle", name: "Nutella Banana Waffle", category: "waffles", img: kitkat, bg: "var(--brand-pink)", tagline: "Classic combo", description: "Toasted waffle, warm Nutella drizzle, fresh banana slices and powdered sugar." },
+  { id: "kitkat-waffle", name: "KitKat Waffle", category: "waffles", img: kitkatWaffle, bg: "var(--brand-orange)", tagline: "Crowd favourite", description: "Belgian waffle drowned in chocolate sauce, crushed KitKat and a scoop of vanilla." },
+  { id: "biscoff-waffle", name: "Biscoff Waffle", category: "waffles", img: biscoffWaffle, bg: "var(--brand-yellow)", tagline: "Caramel heaven", description: "Warm waffle topped with melted Biscoff spread, biscuit crumbs and cream." },
+  { id: "nutella-waffle", name: "Nutella Banana Waffle", category: "waffles", img: nutellaWaffle, bg: "var(--brand-pink)", tagline: "Classic combo", description: "Toasted waffle, warm Nutella drizzle, fresh banana slices and powdered sugar." },
 
-  { id: "biscoff-cheesecake", name: "Biscoff Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-cream)", tagline: "Slow set 12 hrs", description: "Buttery biscuit base, cloud-like cream cheese filling and a Biscoff caramel top." },
-  { id: "blueberry-cheesecake", name: "Blueberry Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-blue)", tagline: "Tangy & sweet", description: "Classic baked cheesecake topped with a glossy homemade blueberry compote." },
-  { id: "newyork-cheesecake", name: "New York Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-purple)", tagline: "Original recipe", description: "Dense, creamy and rich — the way New York intended. Served with berry coulis." },
+  { id: "biscoff-cheesecake", name: "Biscoff Cheesecake", category: "cheesecake", img: biscoff, bg: "var(--brand-cream)", tagline: "", description: "Buttery biscuit base, cloud-like cream cheese filling and a Biscoff caramel top." },
+  { id: "blueberry-cheesecake", name: "Blueberry Cheesecake", category: "cheesecake", img: blueberryCheesecake, bg: "var(--brand-blue)", tagline: "Tangy & sweet", description: "Classic baked cheesecake topped with a glossy homemade blueberry compote." },
+  { id: "newyork-cheesecake", name: "New York Cheesecake", category: "cheesecake", img: newyorkCheesecake, bg: "var(--brand-purple)", tagline: "Original recipe", description: "Dense, creamy and rich — the way New York intended. Served with berry coulis." },
 
-  { id: "fudge-brownie", name: "Classic Fudge Brownie", category: "brownies", img: brownies, bg: "var(--brand-cocoa)", tagline: "Warm & gooey", description: "Dense, fudgy chocolate brownie with a crackly top — best served warm." },
-  { id: "walnut-brownie", name: "Walnut Brownie", category: "brownies", img: brownies, bg: "var(--brand-orange)", tagline: "Crunch lovers", description: "Fudge brownie loaded with toasted walnuts in every bite." },
-  { id: "choco-chip-brownie", name: "Choco Chip Brownie", category: "brownies", img: brownies, bg: "var(--brand-yellow)", tagline: "Double choc", description: "Brownie batter studded with melty dark and white chocolate chips." },
+  { id: "fudge-brownie", name: "Classic Fudge Brownie", category: "brownies", img: fudgeBrownie, bg: "var(--brand-cocoa)", tagline: "Warm & gooey", description: "Dense, fudgy chocolate brownie with a crackly top — best served warm." },
+  { id: "walnut-brownie", name: "Walnut Brownie", category: "brownies", img: walnutBrownie, bg: "var(--brand-orange)", tagline: "Crunch lovers", description: "Fudge brownie loaded with toasted walnuts in every bite." },
+  { id: "choco-chip-brownie", name: "Choco Chip Brownie", category: "brownies", img: chocoChipBrownie, bg: "var(--brand-yellow)", tagline: "Double choc", description: "Brownie batter studded with melty dark and white chocolate chips." },
 
-  { id: "choco-pastry", name: "Choco Truffle Pastry", category: "pastries", img: featured, bg: "var(--brand-pink)", tagline: "Tea-time staple", description: "A single-serve slice of our bestselling choco truffle, perfectly portioned." },
-  { id: "red-velvet-pastry", name: "Red Velvet Pastry", category: "pastries", img: featured, bg: "var(--brand-orange)", tagline: "Cream cheese frosting", description: "Velvety cocoa sponge layered with tangy cream cheese frosting." },
-  { id: "pineapple-pastry", name: "Pineapple Pastry", category: "pastries", img: featured, bg: "var(--brand-yellow)", tagline: "Old-school love", description: "Light vanilla sponge, pineapple compote and fresh whipped cream." },
+  { id: "choco-pastry", name: "Choco Truffle Pastry", category: "pastries", img: chocoPastry, bg: "var(--brand-pink)", tagline: "Tea-time staple", description: "A single-serve slice of our bestselling choco truffle, perfectly portioned." },
+  { id: "red-velvet-pastry", name: "Red Velvet Pastry", category: "pastries", img: redVelvetPastry, bg: "var(--brand-orange)", tagline: "Cream cheese frosting", description: "Velvety cocoa sponge layered with tangy cream cheese frosting." },
+  { id: "pineapple-pastry", name: "Pineapple Pastry", category: "pastries", img: pineapplePastry, bg: "var(--brand-yellow)", tagline: "Old-school love", description: "Light vanilla sponge, pineapple compote and fresh whipped cream." },
 
-  { id: "tea-time-box", name: "Tea-Time Box", category: "combo", img: brownies, bg: "var(--brand-mint)", tagline: "Serves 2-3", description: "A curated mix of brownies, pastries and a small jar of cookies." },
-  { id: "celebration-box", name: "Celebration Box", category: "combo", img: truffle, bg: "var(--brand-purple)", tagline: "Serves 4-6", description: "Mini cake, assorted pastries and a brownie tower for your special day." },
+  { id: "tea-time-box", name: "Tea-Time Box", category: "combo", img: teaTimeBox, bg: "var(--brand-mint)", tagline: "Serves 2-3", description: "A curated mix of brownies, pastries and a small jar of cookies." },
+  { id: "celebration-box", name: "Celebration Box", category: "combo", img: celebrationBox, bg: "var(--brand-purple)", tagline: "Serves 4-6", description: "Mini cake, assorted pastries and a brownie tower for your special day." },
 ];
 
 export function getCategory(slug: string) {
