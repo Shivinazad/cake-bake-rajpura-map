@@ -1,6 +1,4 @@
 import { Instagram } from "lucide-react";
-import zomatoLogo from "@/assets/social/zomato.png";
-import swiggyLogo from "@/assets/social/swiggy.png";
 
 export function Footer() {
   return (
