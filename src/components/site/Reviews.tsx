@@ -7,7 +7,7 @@ const testimonials = [
     location: "Rajpura",
     initials: "PS",
     color: "var(--brand-orange)",
-    text: "Biscoff cheesecake was gone in fifteen minutes. Smooth, not too sweet — easily the best in town.",
+    text: "Biscoff cheesecake was gone in minutes. Smooth, balanced, and easily the best in town.",
     item: "Biscoff Cheesecake",
   },
   {
@@ -83,7 +83,7 @@ export function Reviews() {
         {/* Right column: one compact review at a time with dots */}
         <div className="flex flex-col items-center md:items-stretch">
           <div
-            className="w-full max-w-sm mx-auto overflow-hidden"
+            className="mx-auto w-full max-w-[19rem] overflow-hidden px-2 py-2"
             onTouchEnd={onTouchEnd}
             onTouchMove={onTouchMove}
             onTouchStart={onTouchStart}
@@ -98,21 +98,21 @@ export function Reviews() {
                   data-review
                   className="w-full shrink-0"
                 >
-                  <div className="relative flex h-[13.25rem] flex-col justify-between rounded-2xl border-2 border-[var(--brand-cocoa-deep)] bg-[var(--brand-cream)] p-5 shadow-[3px_3px_0_var(--brand-cocoa-deep)] md:h-[13.75rem]">
+                  <div className="relative flex h-[11.75rem] flex-col justify-between rounded-2xl border-2 border-[var(--brand-cocoa-deep)] bg-[var(--brand-cream)] p-4 shadow-[3px_3px_0_var(--brand-cocoa-deep)]">
                     <Quote className="absolute -top-3 -left-2 h-6 w-6 text-[var(--brand-orange)] fill-current" />
-                    <p className="pr-1 text-sm leading-relaxed text-[var(--brand-cocoa-deep)]/85 italic">
+                    <p className="pr-1 text-[13px] leading-6 text-[var(--brand-cocoa-deep)]/85 italic">
                       "{t.text}"
                     </p>
-                    <div className="mt-4 flex items-center gap-3">
+                    <div className="mt-3 flex items-center gap-3">
                       <div
-                        className="h-10 w-10 rounded-full flex items-center justify-center font-display font-extrabold text-[var(--brand-cocoa-deep)] border-2 border-[var(--brand-cocoa-deep)] text-sm shrink-0"
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[var(--brand-cocoa-deep)] font-display text-sm font-extrabold text-[var(--brand-cocoa-deep)]"
                         style={{ background: t.color }}
                       >
                         {t.initials}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-display font-extrabold text-[var(--brand-cocoa-deep)] text-sm leading-tight truncate">{t.name}</p>
-                        <p className="text-[11px] text-[var(--brand-cocoa-deep)]/60 uppercase tracking-wider truncate">{t.location} · loved the {t.item}</p>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate font-display text-sm font-extrabold leading-tight text-[var(--brand-cocoa-deep)]">{t.name}</p>
+                        <p className="truncate text-[10px] uppercase tracking-wider text-[var(--brand-cocoa-deep)]/60">{t.location} · loved the {t.item}</p>
                       </div>
                     </div>
                   </div>
@@ -122,7 +122,7 @@ export function Reviews() {
           </div>
 
           {/* Clickable dots */}
-          <div className="mt-5 flex w-full justify-center gap-2">
+          <div className="mx-auto mt-4 flex w-full justify-center gap-2">
             {testimonials.map((_, i) => (
               <button
                 key={i}
