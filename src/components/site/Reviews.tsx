@@ -7,7 +7,7 @@ const testimonials = [
     location: "Rajpura",
     initials: "PS",
     color: "var(--brand-orange)",
-    text: "Ordered the Biscoff cheesecake for my sister's birthday — it was gone in fifteen minutes. The texture is ridiculously smooth and not overly sweet. Easily the best bakery in town.",
+    text: "Biscoff cheesecake was gone in fifteen minutes. Smooth, not too sweet — easily the best in town.",
     item: "Biscoff Cheesecake",
   },
   {
@@ -15,7 +15,7 @@ const testimonials = [
     location: "Patiala",
     initials: "AV",
     color: "var(--brand-mint)",
-    text: "Drive down from Patiala just for their KitKat waffles. Crispy outside, soft inside, and the chocolate sauce is real — not that store-bought stuff. Worth every kilometre.",
+    text: "I drive down from Patiala just for the KitKat waffles. Crispy, soft inside, real chocolate. Worth it.",
     item: "KitKat Waffle",
   },
   {
@@ -23,7 +23,7 @@ const testimonials = [
     location: "Rajpura",
     initials: "SK",
     color: "var(--brand-pink)",
-    text: "Their eggless Nutella cake genuinely tastes better than the regular one. My kids ask for it every weekend now. Divesh and the team are super warm too.",
+    text: "The eggless Nutella cake tastes better than the regular one. My kids ask for it every weekend now.",
     item: "Nutella Cake",
   },
 ];
@@ -37,9 +37,9 @@ export function Reviews() {
     const el = scrollerRef.current;
     if (!el) return;
     const onScroll = () => {
-      const card = el.querySelector<HTMLElement>("[data-review]");
-      if (!card) return;
-      const step = card.offsetWidth + 16;
+      const slide = el.querySelector<HTMLElement>("[data-review]");
+      if (!slide) return;
+      const step = slide.offsetWidth;
       const idx = Math.round(el.scrollLeft / step);
       setActive(Math.min(testimonials.length - 1, Math.max(0, idx)));
     };
@@ -49,9 +49,9 @@ export function Reviews() {
 
   const goTo = (i: number) => {
     const el = scrollerRef.current;
-    const card = el?.querySelector<HTMLElement>("[data-review]");
-    if (!el || !card) return;
-    el.scrollTo({ left: (card.offsetWidth + 16) * i, behavior: "smooth" });
+    const slide = el?.querySelector<HTMLElement>("[data-review]");
+    if (!el || !slide) return;
+    el.scrollTo({ left: slide.offsetWidth * i, behavior: "smooth" });
   };
 
   return (
@@ -74,39 +74,41 @@ export function Reviews() {
           </div>
         </div>
 
-        {/* Right column: compact swipeable reviews with breathing room */}
-        <div className="md:px-6">
-          <div
-            ref={scrollerRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2"
-            style={{ scrollbarWidth: "none" }}
-          >
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                data-review
-                className="flex-none w-full snap-center"
-              >
-                <div className="rounded-2xl bg-[var(--brand-cream)] border-2 border-[var(--brand-cocoa-deep)] shadow-[3px_3px_0_var(--brand-cocoa-deep)] p-5 relative max-w-sm mx-auto">
-                  <Quote className="absolute -top-3 -left-2 h-6 w-6 text-[var(--brand-orange)] fill-current" />
-                  <p className="text-sm text-[var(--brand-cocoa-deep)]/85 leading-relaxed italic">
-                    "{t.text}"
-                  </p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <div
-                      className="h-10 w-10 rounded-full flex items-center justify-center font-display font-extrabold text-[var(--brand-cocoa-deep)] border-2 border-[var(--brand-cocoa-deep)] text-sm shrink-0"
-                      style={{ background: t.color }}
-                    >
-                      {t.initials}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-display font-extrabold text-[var(--brand-cocoa-deep)] text-sm leading-tight truncate">{t.name}</p>
-                      <p className="text-[11px] text-[var(--brand-cocoa-deep)]/60 uppercase tracking-wider truncate">{t.location} · loved the {t.item}</p>
+        {/* Right column: one compact review at a time with dots */}
+        <div className="flex flex-col items-center md:items-stretch">
+          <div className="w-full max-w-sm mx-auto">
+            <div
+              ref={scrollerRef}
+              className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth"
+              style={{ scrollbarWidth: "none" }}
+            >
+              {testimonials.map((t) => (
+                <div
+                  key={t.name}
+                  data-review
+                  className="flex-none w-full snap-center px-1"
+                >
+                  <div className="rounded-2xl bg-[var(--brand-cream)] border-2 border-[var(--brand-cocoa-deep)] shadow-[3px_3px_0_var(--brand-cocoa-deep)] p-5 relative">
+                    <Quote className="absolute -top-3 -left-2 h-6 w-6 text-[var(--brand-orange)] fill-current" />
+                    <p className="text-sm text-[var(--brand-cocoa-deep)]/85 leading-relaxed italic">
+                      "{t.text}"
+                    </p>
+                    <div className="mt-4 flex items-center gap-3">
+                      <div
+                        className="h-10 w-10 rounded-full flex items-center justify-center font-display font-extrabold text-[var(--brand-cocoa-deep)] border-2 border-[var(--brand-cocoa-deep)] text-sm shrink-0"
+                        style={{ background: t.color }}
+                      >
+                        {t.initials}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-display font-extrabold text-[var(--brand-cocoa-deep)] text-sm leading-tight truncate">{t.name}</p>
+                        <p className="text-[11px] text-[var(--brand-cocoa-deep)]/60 uppercase tracking-wider truncate">{t.location} · loved the {t.item}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Clickable dots */}
