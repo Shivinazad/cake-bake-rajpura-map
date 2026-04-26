@@ -10,11 +10,11 @@ export function Footer() {
         <p className="font-display text-2xl font-extrabold tracking-tight">CAKE BAKE<span className="text-[var(--brand-orange)]">.</span></p>
         <div className="flex items-center gap-3 text-xs">
           <a href="#" aria-label="Instagram" className="h-8 w-8 inline-flex items-center justify-center rounded-md bg-[var(--brand-cream)] text-[var(--brand-cocoa-deep)]"><Instagram className="h-4 w-4" /></a>
-          <a href="#" aria-label="Zomato" className="h-8 w-8 inline-flex items-center justify-center rounded-md overflow-hidden bg-[var(--brand-cream)]">
-            <img src={zomatoLogo} alt="Zomato" width={512} height={512} loading="lazy" className="h-full w-full object-cover" />
+          <a href="#" aria-label="Zomato" className="h-8 px-2 inline-flex items-center justify-center rounded-md bg-[var(--brand-cream)] text-[var(--brand-cocoa-deep)] text-[11px] font-bold tracking-tight">
+            zomato
           </a>
-          <a href="#" aria-label="Swiggy" className="h-8 w-8 inline-flex items-center justify-center rounded-md overflow-hidden bg-[var(--brand-cream)]">
-            <img src={swiggyLogo} alt="Swiggy" width={512} height={512} loading="lazy" className="h-full w-full object-cover" />
+          <a href="#" aria-label="Swiggy" className="h-8 px-2 inline-flex items-center justify-center rounded-md bg-[var(--brand-cream)] text-[var(--brand-cocoa-deep)] text-[11px] font-bold tracking-tight">
+            swiggy
           </a>
         </div>
       </div>
