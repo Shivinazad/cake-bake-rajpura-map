@@ -1,6 +1,8 @@
 import { Star, Quote } from "lucide-react";
 import { useRef, useState } from "react";
 
+const REVIEW_GAP = 16;
+
 const testimonials = [
   {
     name: "Priya Sharma",
@@ -15,7 +17,7 @@ const testimonials = [
     location: "Patiala",
     initials: "AV",
     color: "var(--brand-mint)",
-    text: "I drive from Patiala for the KitKat waffles. Crisp edges, soft center, and real chocolate every time.",
+    text: "I drive from Patiala for the KitKat waffles. Crisp edges, soft center, and real chocolate every single time.",
     item: "KitKat Waffle",
   },
   {
@@ -23,41 +25,32 @@ const testimonials = [
     location: "Rajpura",
     initials: "SK",
     color: "var(--brand-pink)",
-    text: "The eggless Nutella cake is rich, airy, and never too sweet. My kids ask for it every weekend.",
+    text: "The eggless Nutella cake is rich, airy, and never too sweet. My family asks for it every weekend.",
     item: "Nutella Cake",
   },
 ];
 
 export function Reviews() {
   const [active, setActive] = useState(0);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
 
-  const goTo = (i: number) => setActive(i);
+  const goTo = (i: number) => {
+    const el = carouselRef.current;
+    if (!el) return;
 
-  const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    touchStartX.current = event.touches[0]?.clientX ?? null;
-    touchEndX.current = null;
+    el.scrollTo({
+      left: i * (el.clientWidth + REVIEW_GAP),
+      behavior: "smooth",
+    });
+    setActive(i);
   };
 
-  const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
-    touchEndX.current = event.touches[0]?.clientX ?? null;
-  };
+  const handleScroll = () => {
+    const el = carouselRef.current;
+    if (!el) return;
 
-  const onTouchEnd = () => {
-    if (touchStartX.current === null || touchEndX.current === null) return;
-
-    const distance = touchStartX.current - touchEndX.current;
-    if (Math.abs(distance) < 40) return;
-
-    if (distance > 0) {
-      setActive((current) => Math.min(current + 1, testimonials.length - 1));
-    } else {
-      setActive((current) => Math.max(current - 1, 0));
-    }
-
-    touchStartX.current = null;
-    touchEndX.current = null;
+    const index = Math.round(el.scrollLeft / (el.clientWidth + REVIEW_GAP));
+    setActive(Math.max(0, Math.min(index, testimonials.length - 1)));
   };
 
   return (
@@ -83,20 +76,17 @@ export function Reviews() {
         {/* Right column: one compact review at a time with dots */}
         <div className="flex flex-col items-center md:items-stretch">
           <div
-            className="mx-auto w-full max-w-[19rem] overflow-hidden px-2 py-2"
-            onTouchEnd={onTouchEnd}
-            onTouchMove={onTouchMove}
-            onTouchStart={onTouchStart}
+            ref={carouselRef}
+            className="mx-auto w-full max-w-[19rem] snap-x snap-mandatory overflow-x-auto px-1 py-2 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            onScroll={handleScroll}
+            style={{ WebkitOverflowScrolling: "touch" }}
           >
-            <div
-              className="flex transition-transform duration-300 ease-out"
-              style={{ transform: `translateX(-${active * 100}%)` }}
-            >
+            <div className="grid grid-flow-col auto-cols-[100%] gap-4">
               {testimonials.map((t) => (
                 <div
                   key={t.name}
                   data-review
-                  className="w-full shrink-0"
+                  className="w-full snap-center px-0.5"
                 >
                   <div className="relative flex h-[11.75rem] flex-col justify-between rounded-2xl border-2 border-[var(--brand-cocoa-deep)] bg-[var(--brand-cream)] p-4 shadow-[3px_3px_0_var(--brand-cocoa-deep)]">
                     <Quote className="absolute -top-3 -left-2 h-6 w-6 text-[var(--brand-orange)] fill-current" />
