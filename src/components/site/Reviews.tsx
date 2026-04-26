@@ -1,5 +1,5 @@
 import { Star, Quote } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const testimonials = [
   {
@@ -15,7 +15,7 @@ const testimonials = [
     location: "Patiala",
     initials: "AV",
     color: "var(--brand-mint)",
-    text: "I drive down from Patiala just for the KitKat waffles. Crispy, soft inside, real chocolate. Worth it.",
+    text: "I drive from Patiala for the KitKat waffles. Crisp edges, soft center, and real chocolate every time.",
     item: "KitKat Waffle",
   },
   {
@@ -23,35 +23,41 @@ const testimonials = [
     location: "Rajpura",
     initials: "SK",
     color: "var(--brand-pink)",
-    text: "The eggless Nutella cake tastes better than the regular one. My kids ask for it every weekend now.",
+    text: "The eggless Nutella cake is rich, airy, and never too sweet. My kids ask for it every weekend.",
     item: "Nutella Cake",
   },
 ];
 
 export function Reviews() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
-  // Track which review is centred while user swipes
-  useEffect(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      const slide = el.querySelector<HTMLElement>("[data-review]");
-      if (!slide) return;
-      const step = slide.offsetWidth;
-      const idx = Math.round(el.scrollLeft / step);
-      setActive(Math.min(testimonials.length - 1, Math.max(0, idx)));
-    };
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, []);
+  const goTo = (i: number) => setActive(i);
 
-  const goTo = (i: number) => {
-    const el = scrollerRef.current;
-    const slide = el?.querySelector<HTMLElement>("[data-review]");
-    if (!el || !slide) return;
-    el.scrollTo({ left: slide.offsetWidth * i, behavior: "smooth" });
+  const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+    touchEndX.current = null;
+  };
+
+  const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    touchEndX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const onTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    if (Math.abs(distance) < 40) return;
+
+    if (distance > 0) {
+      setActive((current) => Math.min(current + 1, testimonials.length - 1));
+    } else {
+      setActive((current) => Math.max(current - 1, 0));
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   return (
@@ -76,21 +82,25 @@ export function Reviews() {
 
         {/* Right column: one compact review at a time with dots */}
         <div className="flex flex-col items-center md:items-stretch">
-          <div className="w-full max-w-sm mx-auto">
+          <div
+            className="w-full max-w-sm mx-auto overflow-hidden"
+            onTouchEnd={onTouchEnd}
+            onTouchMove={onTouchMove}
+            onTouchStart={onTouchStart}
+          >
             <div
-              ref={scrollerRef}
-              className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth"
-              style={{ scrollbarWidth: "none" }}
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${active * 100}%)` }}
             >
               {testimonials.map((t) => (
                 <div
                   key={t.name}
                   data-review
-                  className="flex-none w-full snap-center px-1"
+                  className="w-full shrink-0"
                 >
-                  <div className="rounded-2xl bg-[var(--brand-cream)] border-2 border-[var(--brand-cocoa-deep)] shadow-[3px_3px_0_var(--brand-cocoa-deep)] p-5 relative">
+                  <div className="relative flex h-[13.25rem] flex-col justify-between rounded-2xl border-2 border-[var(--brand-cocoa-deep)] bg-[var(--brand-cream)] p-5 shadow-[3px_3px_0_var(--brand-cocoa-deep)] md:h-[13.75rem]">
                     <Quote className="absolute -top-3 -left-2 h-6 w-6 text-[var(--brand-orange)] fill-current" />
-                    <p className="text-sm text-[var(--brand-cocoa-deep)]/85 leading-relaxed italic">
+                    <p className="pr-1 text-sm leading-relaxed text-[var(--brand-cocoa-deep)]/85 italic">
                       "{t.text}"
                     </p>
                     <div className="mt-4 flex items-center gap-3">
@@ -112,7 +122,7 @@ export function Reviews() {
           </div>
 
           {/* Clickable dots */}
-          <div className="mt-5 flex justify-center gap-2">
+          <div className="mt-5 flex w-full justify-center gap-2">
             {testimonials.map((_, i) => (
               <button
                 key={i}
